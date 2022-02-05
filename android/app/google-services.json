@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "66646796269",
+    "project_id": "lets-quick-share",
+    "storage_bucket": "lets-quick-share.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66646796269:android:29501391ecf5ea79fce9e4",
+        "android_client_info": {
+          "package_name": "me.coderays.lets_quick_share"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "66646796269-4o7epen4fujn772lsaiffvm2c1th9kso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW3mTWEmnLWuIDrZJ0YmiI3ICuN47bnzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "66646796269-4o7epen4fujn772lsaiffvm2c1th9kso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
