@@ -17,97 +17,91 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Lets Quick Share",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Lets Quick Share"),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection(getFirebaseUser()!.uid)
-                  .snapshots(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-
-                return ListView(
-                  children: snapshot.data!.docs.map((e) {
-                    return Column(children: [
-                      Center(
-                        child: SelectableText(
-                          e['text'],
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                Clipboard.setData(
-                                    ClipboardData(text: e['text']));
-                              },
-                              child: Icon(Icons.copy),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                FirebaseFirestore.instance
-                                    .collection(getFirebaseUser()!.uid)
-                                    .doc(e.id)
-                                    .delete();
-                              },
-                              child: Icon(Icons.delete_outline),
-                            ),
-                          ]),
-                      Divider(
-                        color: Colors.blue,
-                      )
-                    ]);
-                  }).toList(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Lets Quick Share"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection(getFirebaseUser()!.uid)
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
                 );
-              }),
-        ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              UserAccountsDrawerHeader(
-                accountName: Text(
-                  getFirebaseUser()!.displayName.toString(),
-                ),
-                accountEmail: Text(
-                  getFirebaseUser()!.email.toString(),
-                ),
+              }
+
+              return ListView(
+                children: snapshot.data!.docs.map((e) {
+                  return Column(children: [
+                    Center(
+                      child: SelectableText(
+                        e['text'],
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Clipboard.setData(ClipboardData(text: e['text']));
+                            },
+                            child: Icon(Icons.copy),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              FirebaseFirestore.instance
+                                  .collection(getFirebaseUser()!.uid)
+                                  .doc(e.id)
+                                  .delete();
+                            },
+                            child: Icon(Icons.delete_outline),
+                          ),
+                        ]),
+                    Divider(
+                      color: Colors.blue,
+                    )
+                  ]);
+                }).toList(),
+              );
+            }),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(
+                getFirebaseUser()!.displayName.toString(),
               ),
-              ListTile(
-                leading: Icon(Icons.logout),
-                title: Text("LogOut"),
-                onTap: () async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  await prefs.setBool('loggedIn', false);
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => SignIn()));
-                  AuthenticationHelper().signOut();
-                },
-              )
-            ],
-          ),
+              accountEmail: Text(
+                getFirebaseUser()!.email.toString(),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text("LogOut"),
+              onTap: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setBool('loggedIn', false);
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => SignIn()));
+                AuthenticationHelper().signOut();
+              },
+            )
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AddData()));
-          },
-          child: Icon(Icons.add),
-        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddData()));
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
