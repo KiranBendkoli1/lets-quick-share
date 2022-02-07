@@ -115,7 +115,7 @@ class _SignUpState extends State<SignUp> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      "Already a member, Click here to Login.",
+                      "Already a member, Then go to Sign In.",
                     ),
                   )
                 ],

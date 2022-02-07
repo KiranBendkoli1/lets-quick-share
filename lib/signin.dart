@@ -119,7 +119,7 @@ class _SignInState extends State<SignIn> {
                       );
                     },
                     child: Text(
-                      "Not a member, Click here to SignUp.",
+                      "Not a member, Click here to Sign Up.",
                     ),
                   )
                 ],
