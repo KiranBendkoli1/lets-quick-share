@@ -6,7 +6,12 @@ import 'package:lets_quick_share/signin.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Initialization of firebase app
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: 'AIzaSyDtfaZuOOBqXsoPPdq4F6qVXTWLQt2Z6Ls',
+          appId: '1:66646796269:web:cbe1e658c7076ab4fce9e4',
+          messagingSenderId: "G-5NNFN9WCYV",
+          projectId: "lets-quick-share")); // Initialization of firebase app
   runApp(MyApp());
 }
 
