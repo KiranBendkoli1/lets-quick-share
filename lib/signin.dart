@@ -35,91 +35,106 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Text("SignIn Page"),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: _emailContoroller,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        label: Text("Email Address"),
-                        border: OutlineInputBorder(),
+      body: Center(child: rfunction(width)),
+    );
+  }
+
+  Widget rfunction(width) {
+    if (width > 950)
+      return myContainer(width, 0.6);
+    else if (width > 600)
+      return myContainer(width, 0.8);
+    else
+      return myContainer(width, 1);
+  }
+
+  Widget myContainer(width, per) {
+    return SizedBox(
+      width: width * per,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: _emailContoroller,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      label: Text("Email Address"),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: _passwordContoroller,
+                    keyboardType: TextInputType.text,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      label: Text("Password"),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                  ),
+                  onPressed: () {
+                    email = _emailContoroller.text;
+                    password = _passwordContoroller.text;
+                    setState(() {});
+                    AuthenticationHelper()
+                        .signIn(email: email, password: password)
+                        .then((result) async {
+                      if (result == null) {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        await prefs.setBool('loggedIn', true);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );
+                      } else {
+                        Scaffold.of(context).showSnackBar(
+                          SnackBar(
+                              content: Text(
+                            result,
+                            style: TextStyle(fontSize: 16),
+                          )),
+                        );
+                      }
+                    });
+                  },
+                  child: Text(
+                    'SignIn',
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUp(),
                       ),
-                    ),
+                    );
+                  },
+                  child: Text(
+                    "Not a member, Click here to Sign Up.",
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: _passwordContoroller,
-                      keyboardType: TextInputType.text,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        label: Text("Password"),
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      onPrimary: Colors.white,
-                    ),
-                    onPressed: () {
-                      email = _emailContoroller.text;
-                      password = _passwordContoroller.text;
-                      setState(() {});
-                      AuthenticationHelper()
-                          .signIn(email: email, password: password)
-                          .then((result) async {
-                        if (result == null) {
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          await prefs.setBool('loggedIn', true);
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        } else {
-                          Scaffold.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text(
-                              result,
-                              style: TextStyle(fontSize: 16),
-                            )),
-                          );
-                        }
-                      });
-                    },
-                    child: Text(
-                      'SignIn',
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUp(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "Not a member, Click here to Sign Up.",
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),

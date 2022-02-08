@@ -5,10 +5,14 @@ class AuthenticationHelper {
   get user => _auth.currentUser;
 
   // Sign Up Method
-  Future signUp({required String email, required String password}) async {
+  Future signUp(
+      {required String email,
+      required String password,
+      required String name}) async {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      _auth.currentUser!.updateDisplayName(name);
       return null;
     } on FirebaseAuthException catch (e) {
       return e.message;
