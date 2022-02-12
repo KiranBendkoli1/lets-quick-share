@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.coderays.lets_quick_share">
+    package="com.example.lets_quick_share">
    <application
         android:label="lets_quick_share"
         android:name="${applicationName}"

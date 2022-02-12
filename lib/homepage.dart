@@ -47,21 +47,21 @@ class HomePage extends StatelessWidget {
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          TextButton(
+                          IconButton(
                             onPressed: () {
                               Clipboard.setData(ClipboardData(text: e['text']));
                             },
-                            child: Icon(Icons.copy),
+                            icon: Icon(Icons.copy),
                           ),
-                          TextButton(
+                          IconButton(
+                            icon: Icon(Icons.delete_outline),
                             onPressed: () {
                               FirebaseFirestore.instance
                                   .collection(getFirebaseUser()!.uid)
                                   .doc(e.id)
                                   .delete();
                             },
-                            child: Icon(Icons.delete_outline),
-                          ),
+                          )
                         ]),
                     Divider(
                       color: Colors.blue,
@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.logout),
-              title: Text("LogOut"),
+              title: Text("Sign Out"),
               onTap: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 await prefs.setBool('loggedIn', false);

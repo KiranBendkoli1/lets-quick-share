@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:66646796269:android:29501391ecf5ea79fce9e4",
         "android_client_info": {
-          "package_name": "me.coderays.lets_quick_share"
+          "package_name": "com.example.lets_quick_share"
         }
       },
       "oauth_client": [
