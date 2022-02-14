@@ -3,10 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:lets_quick_share/add_data.dart';
 import 'package:lets_quick_share/authentication.dart';
 import 'package:lets_quick_share/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -51,10 +53,44 @@ class HomePage extends StatelessWidget {
                             onPressed: () {
                               Clipboard.setData(ClipboardData(text: e['text']));
                             },
-                            icon: Icon(Icons.copy),
+                            icon: Icon(
+                              Icons.copy,
+                              color: Colors.blue,
+                              size: 16,
+                            ),
                           ),
                           IconButton(
-                            icon: Icon(Icons.delete_outline),
+                            icon: Icon(
+                              Icons.launch_rounded,
+                              color: Colors.blue,
+                              size: 16,
+                            ),
+                            onPressed: () async {
+                              var url = e['text'];
+                              if (await canLaunch(url)) {
+                                launch(url);
+                              } else {
+                                throw "could not launch $url";
+                              }
+                              // launch(e['text']);
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.share,
+                              color: Colors.blue,
+                              size: 16,
+                            ),
+                            onPressed: () {
+                              Share.share(e['text']);
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.delete_outlined,
+                              color: Colors.blue,
+                              size: 16,
+                            ),
                             onPressed: () {
                               FirebaseFirestore.instance
                                   .collection(getFirebaseUser()!.uid)
