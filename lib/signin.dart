@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_final_fields, prefer_const_constructors
 
 import "package:flutter/material.dart";
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lets_quick_share/authentication.dart';
 import 'package:lets_quick_share/homepage.dart';
 import 'package:lets_quick_share/signup.dart';
@@ -105,14 +106,6 @@ class _SignInState extends State<SignIn> {
                           MaterialPageRoute(
                             builder: (context) => HomePage(),
                           ),
-                        );
-                      } else {
-                        Scaffold.of(context).showSnackBar(
-                          SnackBar(
-                              content: Text(
-                            result,
-                            style: TextStyle(fontSize: 16),
-                          )),
                         );
                       }
                     });

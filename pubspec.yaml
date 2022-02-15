@@ -33,6 +33,7 @@ dependencies:
   firebase_core: ^1.12.0
   flutter:
     sdk: flutter
+  fluttertoast: ^8.0.8
   share_plus: ^3.0.4
   shared_preferences: ^2.0.13
   url_launcher: ^6.0.18

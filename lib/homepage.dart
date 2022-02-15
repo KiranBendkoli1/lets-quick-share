@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:lets_quick_share/add_data.dart';
 import 'package:lets_quick_share/authentication.dart';
@@ -52,6 +53,13 @@ class HomePage extends StatelessWidget {
                           IconButton(
                             onPressed: () {
                               Clipboard.setData(ClipboardData(text: e['text']));
+                              Fluttertoast.showToast(
+                                msg: "  '${e['text']}' Copied to Clipboard",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.blueGrey,
+                                fontSize: 12,
+                              );
                             },
                             icon: Icon(
                               Icons.copy,
@@ -70,7 +78,13 @@ class HomePage extends StatelessWidget {
                               if (await canLaunch(url)) {
                                 launch(url);
                               } else {
-                                throw "could not launch $url";
+                                Fluttertoast.showToast(
+                                  msg: "could not launch '$url' ",
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  backgroundColor: Colors.blueGrey,
+                                  fontSize: 12,
+                                );
                               }
                               // launch(e['text']);
                             },
@@ -96,6 +110,13 @@ class HomePage extends StatelessWidget {
                                   .collection(getFirebaseUser()!.uid)
                                   .doc(e.id)
                                   .delete();
+                              Fluttertoast.showToast(
+                                msg: "Record Deleted",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.blueGrey,
+                                fontSize: 12,
+                              );
                             },
                           )
                         ]),
@@ -112,7 +133,7 @@ class HomePage extends StatelessWidget {
           children: [
             UserAccountsDrawerHeader(
               accountName: Text(
-                getFirebaseUser()!.displayName.toString(),
+                "",
               ),
               accountEmail: Text(
                 getFirebaseUser()!.email.toString(),

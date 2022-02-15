@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lets_quick_share/homepage.dart';
 
 class AddData extends StatefulWidget {
@@ -35,16 +35,22 @@ class _AddDataState extends State<AddData> {
               FirebaseFirestore.instance
                   .collection(firebaseUser!.uid)
                   .add({'text': txt});
+              Fluttertoast.showToast(
+                msg: "$txt uploaded",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                backgroundColor: Colors.blueGrey,
+                fontSize: 12,
+              );
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => const HomePage()));
             },
             child: RichText(
                 text: const TextSpan(children: [
-              const WidgetSpan(
-                child: const Icon(Icons.cloud_upload),
+              WidgetSpan(
+                child: Icon(Icons.cloud_upload),
               ),
-              TextSpan(
-                  text: "  Upload", style: const TextStyle(color: Colors.blue)),
+              TextSpan(text: "  Upload", style: TextStyle(color: Colors.blue)),
             ])),
           )
         ]),
