@@ -32,21 +32,42 @@ Website Link: [https://lets-quick-share.web.app/#/](https://lets-quick-share.web
 
 ### Images 
 #### App in Light Mode
-<div style="display:flex">
-    <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/ll.jpg"/> <p align='center'>Login Page</p> </div>
-    <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/hl.jpg"/> <p align='center'>Home Page</p> </div>
-    <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/ul.jpg"/> <p align='center'>Upload Page</p> </div>
-</div>
+
+<table>
+  <tr>
+   <td><div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/ll.jpg" height="530" width="250"/> <p align='center'>Login Page</p> </div>
+   </td>
+   <td>
+     <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/hl.jpg" height="530" width="250"/> <p align='center'>Home Page</p> </div>
+   </td>
+   <td><div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/ul.jpg" height="530" width="250"/> <p align='center'>Upload Page</p> </div>
+   </td>
+ </tr>
+ </table>
 
 #### App in Dark Mode
-<div style="display:flex">
-    <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/ld.jpg"/> <p align='center'>Login Page</p> </div>
-    <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/hd.jpg"/> <p align='center'>Home Page</p> </div>
-    <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/ud.jpg"/> <p align='center'>Upload Page</p> </div>
-</div>
+
+<table>
+  <tr>
+   <td> <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/ld.jpg" height="530" width="250"/> <p align='center'>Login Page</p> </div>
+   </td>
+   <td>
+    <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/hd.jpg" height="530" width="250"/> <p align='center'>Home Page</p> </div>
+   </td>
+   <td><div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/ud.jpg" height="530" width="250"/> <p align='center'>Upload Page</p> </div>
+   </td>
+ </tr>
+ </table>
+ 
+
 
 #### Web App 
-<div>
- <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/lw.png"/> <p align='center'>Login Page</p> </div>
-  <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/hw.png"/> <p align='center'>Home Page</p> </div>
-</div>
+
+<table>
+    <tr>
+    <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/lw.png" /> <p align='center'>Login Page</p> </div>
+    </tr>
+    <tr>
+     <div style="margin:10px"><img src="https://raw.githubusercontent.com/KiranBendkoli1/lets-quick-share/master/assets/hw.png"/> <p align='center'>Home Page</p> </div>
+    </tr>
+</table>
