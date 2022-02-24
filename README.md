@@ -4,7 +4,7 @@
 This app lets you quickly share texts between your different devices
 
 ### Downloads and Web App Link
-App Download Link: [Lets Quick Share](https://drive.google.com/file/d/1w-SjyvBcJa5OJP40ioVn2zhJbnxFn6vc/view?usp=sharing)
+App Download Link: [Lets Quick Share](https://github.com/KiranBendkoli1/lets-quick-share/releases/tag/v1.0.0)
 Website Link: [https://lets-quick-share.web.app/#/](https://lets-quick-share.web.app/#/)
 
 ### Features:
