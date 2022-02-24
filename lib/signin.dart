@@ -21,18 +21,8 @@ class _SignInState extends State<SignIn> {
 
   @override
   void initState() {
-    // checkSignIn();
     super.initState();
   }
-
-  // void checkSignIn() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   bool? isLoggedIn = prefs.getBool('loggedIn');
-  //   if (isLoggedIn == true) {
-  //     Navigator.of(context).pushReplacement(
-  //         MaterialPageRoute(builder: ((context) => const HomePage())));
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {

@@ -54,23 +54,22 @@ class HomePage extends StatelessWidget {
                             onPressed: () {
                               Clipboard.setData(ClipboardData(text: e['text']));
                               Fluttertoast.showToast(
-                                msg: "  '${e['text']}' Copied to Clipboard",
+                                msg: "text/usr Copied to Clipboard",
                                 toastLength: Toast.LENGTH_LONG,
                                 gravity: ToastGravity.BOTTOM,
-                                backgroundColor: Colors.blueGrey,
                                 fontSize: 12,
                               );
                             },
                             icon: Icon(
                               Icons.copy,
-                              color: Colors.blue,
+                              // color: Theme.of(context).primaryColor,
                               size: 16,
                             ),
                           ),
                           IconButton(
                             icon: Icon(
                               Icons.launch_rounded,
-                              color: Colors.blue,
+                              // color: Theme.of(context).primaryColor,
                               size: 16,
                             ),
                             onPressed: () async {
@@ -82,7 +81,8 @@ class HomePage extends StatelessWidget {
                                   msg: "could not launch '$url' ",
                                   toastLength: Toast.LENGTH_LONG,
                                   gravity: ToastGravity.BOTTOM,
-                                  backgroundColor: Colors.blueGrey,
+                                  backgroundColor:
+                                      Theme.of(context).primaryIconTheme.color,
                                   fontSize: 12,
                                 );
                               }
@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
                           IconButton(
                             icon: Icon(
                               Icons.share,
-                              color: Colors.blue,
+                              // color: Theme.of(context).primaryColor,
                               size: 16,
                             ),
                             onPressed: () {
@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
                           IconButton(
                             icon: Icon(
                               Icons.delete_outlined,
-                              color: Colors.blue,
+                              // color: Theme.of(context).primaryColor,
                               size: 16,
                             ),
                             onPressed: () {
@@ -114,15 +114,16 @@ class HomePage extends StatelessWidget {
                                 msg: "Record Deleted",
                                 toastLength: Toast.LENGTH_LONG,
                                 gravity: ToastGravity.BOTTOM,
-                                backgroundColor: Colors.blueGrey,
+                                backgroundColor:
+                                    Theme.of(context).primaryIconTheme.color,
                                 fontSize: 12,
                               );
                             },
                           )
                         ]),
                     Divider(
-                      color: Colors.blue,
-                    )
+                        // color: Theme.of(context).primaryColor,
+                        )
                   ]);
                 }).toList(),
               );
@@ -156,7 +157,11 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddData()));
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddData(),
+            ),
+          );
         },
         child: Icon(Icons.add),
       ),

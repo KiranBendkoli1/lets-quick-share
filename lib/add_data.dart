@@ -25,7 +25,8 @@ class _AddDataState extends State<AddData> {
               controller: _txtEditingController,
               maxLines: 20,
               decoration: const InputDecoration(
-                  hintText: "Enter/Paste your text here: "),
+                hintText: "Enter/Paste your text here: ",
+              ),
             ),
           ),
           TextButton(
@@ -36,7 +37,7 @@ class _AddDataState extends State<AddData> {
                   .collection(firebaseUser!.uid)
                   .add({'text': txt});
               Fluttertoast.showToast(
-                msg: "$txt uploaded",
+                msg: "Data uploaded",
                 toastLength: Toast.LENGTH_LONG,
                 gravity: ToastGravity.BOTTOM,
                 backgroundColor: Colors.blueGrey,
