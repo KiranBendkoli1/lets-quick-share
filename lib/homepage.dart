@@ -8,7 +8,6 @@ import 'package:share_plus/share_plus.dart';
 import 'package:lets_quick_share/add_data.dart';
 import 'package:lets_quick_share/authentication.dart';
 import 'package:lets_quick_share/signin.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
@@ -54,7 +53,7 @@ class HomePage extends StatelessWidget {
                             onPressed: () {
                               Clipboard.setData(ClipboardData(text: e['text']));
                               Fluttertoast.showToast(
-                                msg: "text/usr Copied to Clipboard",
+                                msg: "Copied to Clipboard",
                                 toastLength: Toast.LENGTH_LONG,
                                 gravity: ToastGravity.BOTTOM,
                                 fontSize: 12,
@@ -62,7 +61,6 @@ class HomePage extends StatelessWidget {
                             },
                             icon: Icon(
                               Icons.copy,
-                              // color: Theme.of(context).primaryColor,
                               size: 16,
                             ),
                           ),
@@ -78,7 +76,7 @@ class HomePage extends StatelessWidget {
                                 launch(url);
                               } else {
                                 Fluttertoast.showToast(
-                                  msg: "could not launch '$url' ",
+                                  msg: "Could not Launch '$url' ",
                                   toastLength: Toast.LENGTH_LONG,
                                   gravity: ToastGravity.BOTTOM,
                                   backgroundColor:
@@ -86,13 +84,11 @@ class HomePage extends StatelessWidget {
                                   fontSize: 12,
                                 );
                               }
-                              // launch(e['text']);
                             },
                           ),
                           IconButton(
                             icon: Icon(
                               Icons.share,
-                              // color: Theme.of(context).primaryColor,
                               size: 16,
                             ),
                             onPressed: () {
@@ -102,7 +98,6 @@ class HomePage extends StatelessWidget {
                           IconButton(
                             icon: Icon(
                               Icons.delete_outlined,
-                              // color: Theme.of(context).primaryColor,
                               size: 16,
                             ),
                             onPressed: () {
@@ -111,7 +106,7 @@ class HomePage extends StatelessWidget {
                                   .doc(e.id)
                                   .delete();
                               Fluttertoast.showToast(
-                                msg: "Record Deleted",
+                                msg: "Deleted",
                                 toastLength: Toast.LENGTH_LONG,
                                 gravity: ToastGravity.BOTTOM,
                                 backgroundColor:
@@ -121,9 +116,7 @@ class HomePage extends StatelessWidget {
                             },
                           )
                         ]),
-                    Divider(
-                        // color: Theme.of(context).primaryColor,
-                        )
+                    Divider()
                   ]);
                 }).toList(),
               );
@@ -144,8 +137,6 @@ class HomePage extends StatelessWidget {
               leading: Icon(Icons.logout),
               title: Text("Sign Out"),
               onTap: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                await prefs.setBool('loggedIn', false);
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => SignIn()));
                 AuthenticationHelper().signOut();

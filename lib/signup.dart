@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lets_quick_share/authentication.dart';
 import 'package:lets_quick_share/homepage.dart';
 import 'package:lets_quick_share/signin.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -23,21 +22,7 @@ class _SignUpState extends State<SignUp> {
   @override
   void initState() {
     super.initState();
-    //checkSignIn();
   }
-
-  // void checkSignIn() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   bool? isLoggedIn = prefs.getBool('loggedIn');
-  //   if (isLoggedIn == true) {
-  //     Navigator.pushReplacement(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => HomePage(),
-  //       ),
-  //     );
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -115,9 +100,6 @@ class _SignUpState extends State<SignUp> {
                         .signUp(email: email, password: password, name: name)
                         .then((result) async {
                       if (result == null) {
-                        SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        await prefs.setBool('loggedIn', true);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
