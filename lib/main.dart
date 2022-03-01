@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lets_quick_share/homepage.dart';
+import 'package:lets_quick_share/pdf_section.dart';
 import 'package:lets_quick_share/signin.dart';
 import 'package:lets_quick_share/users_data.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
@@ -71,7 +72,7 @@ class _MyAppState extends State<MyApp> {
               if (isnull != null) {
                 return IntentAddData(text: data1.toString());
               }
-              return HomePage();
+              return PDFSection();
             } else if (snapshot.hasError) {
               return Center(
                 child: Text('${snapshot.error}'),
